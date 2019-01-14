@@ -1,5 +1,7 @@
 import os
+from dotenv import load_dotenv
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv()
 
 
 class Config(object):
@@ -8,3 +10,4 @@ class Config(object):
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     POSTS_PER_PAGE = 25
+    MOVIEDB_API_KEY = os.getenv("MOVIEDB_API_KEY")
