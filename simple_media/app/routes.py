@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, db
+from app import app, db, external_api
 from app.forms import LoginForm, RegistrationForm, \
     EditProfileForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -31,6 +31,8 @@ def index():
     # posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
     # next_url = url_for('index', page=posts.next_num) if posts.has_next else None
     # prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None
+
+    external_api.get_index_movies()
     return render_template('index.html', title='Home')
 
 
